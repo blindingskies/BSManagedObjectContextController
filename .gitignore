@@ -1,1 +1,6 @@
 .DS_Store
+Code/*/build
+_*.h
+_*.m
+Code/*/*.xcodeproj/*.mode*v*
+Code/*/*.xcodeproj/*.pbxuser
