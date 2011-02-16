@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'Project Manager' target in the 'Project Manager' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+	#import <Core/Core.h>
+#endif
