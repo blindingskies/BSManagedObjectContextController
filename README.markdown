@@ -7,7 +7,7 @@ Note, that to actually use the example projects, it is necessary to run mogenera
 
 	$ cd Code/Core/Classes/Managed\ Objects/
 	$ mogenerator -m ../../Core\ Data\ Models/DataModel.xcdatamodeld/DataModel\ 2.xcdatamodel/
-
+	
 What does it do?
 ----------------
 
