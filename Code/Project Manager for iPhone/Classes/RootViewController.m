@@ -7,8 +7,6 @@
 //
 
 #import "RootViewController.h"
-#import "MOCManager.h"
-#import "Project.h"
 
 @implementation RootViewController
 
