@@ -3,6 +3,11 @@ BSManagedObjectContextManager
 
 This repository is an elaborate example of how to use a single class, BSManagedObjectContextManager, with an explanation of that class's place in a Mac or iPhone application's Core Data stack.
 
+Note, that to actually use the example projects, it is necessary to run mogenerator http://rentzsch.github.com/mogenerator/ to create intermediate machine files which are ignored by the repository. First, install mogenerator, then in Terminal change directory to the clone of this repository and run:
+
+	$ cd Code/Core/Classes/Managed\ Objects/
+	$ mogenerator -m ../../Core\ Data\ Models/DataModel.xcdatamodeld/DataModel\ 2.xcdatamodel/
+
 What does it do?
 ----------------
 
