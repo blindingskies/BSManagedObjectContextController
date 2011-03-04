@@ -75,6 +75,7 @@ NSInteger sortVersionedModelPaths(id str1, id str2, void *context);
 // Notification handlers.
 - (void)managedObjectContextWillSave:(NSNotification *)aNotificationNote;
 - (void)managedObjectContextDidSave:(NSNotification *)aNotificationNote;
+- (void)mergeChangesFromContextOnOtherThread:(NSNotification *)aNotificationNote;
 
 // The application delegate should call this method in its own applicationShouldTerminate: implementation
 #if (TARGET_OS_MAC && !(TARGET_OS_EMBEDDED || TARGET_OS_IPHONE))
