@@ -25,35 +25,35 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 65DF907E130C08D0002D0C3A /* Core.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 65DF8E0F130BEE3F002D0C3A /* CoreBundle.bundle */;
+			remoteGlobalIDString = 65DF8E0F130BEE3F002D0C3A;
 			remoteInfo = CoreBundle;
 		};
 		65DF9086130C08D0002D0C3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65DF907E130C08D0002D0C3A /* Core.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 65DF8E72130BF29F002D0C3A /* Core.framework */;
+			remoteGlobalIDString = 65DF8E72130BF29F002D0C3A;
 			remoteInfo = Core;
 		};
 		65DF9088130C08D0002D0C3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65DF907E130C08D0002D0C3A /* Core.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 65DF8EAD130BF798002D0C3A /* libCore.a */;
+			remoteGlobalIDString = 65DF8EAD130BF798002D0C3A;
 			remoteInfo = libCore;
 		};
 		65DF9090130C0923002D0C3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65DF907E130C08D0002D0C3A /* Core.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 65DF8E0E130BEE3F002D0C3A /* CoreBundle */;
+			remoteGlobalIDString = 65DF8E0E130BEE3F002D0C3A;
 			remoteInfo = CoreBundle;
 		};
 		65DF9092130C0923002D0C3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65DF907E130C08D0002D0C3A /* Core.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 65DF8EAC130BF798002D0C3A /* libCore */;
+			remoteGlobalIDString = 65DF8EAC130BF798002D0C3A;
 			remoteInfo = libCore;
 		};
 /* End PBXContainerItemProxy section */

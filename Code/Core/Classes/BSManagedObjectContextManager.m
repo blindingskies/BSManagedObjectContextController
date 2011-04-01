@@ -38,7 +38,7 @@ NSInteger sortVersionedModelPaths(id str1, id str2, void *context) {
 @implementation BSManagedObjectContextManager
 
 // Make this a Singleton class
-SYNTHESIZE_SINGLETON_FOR_CLASS(BSManagedObjectContextManager);
+SYNTHESIZE_SINGLETON_FOR_CLASS(BSManagedObjectContextManager, sharedManager);
 
 @synthesize delegate;
 @synthesize applicationSupportDirectory;

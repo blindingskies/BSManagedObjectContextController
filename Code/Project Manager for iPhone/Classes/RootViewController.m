@@ -63,7 +63,7 @@
 
 - (NSManagedObjectContext *)managedObjectContext {
 	// We need a managed object context
-	return [[MOCManager sharedMOCManager] managedObjectContext];
+	return [[MOCManager sharedManager] managedObjectContext];
 }
 
 #pragma mark -
@@ -248,7 +248,7 @@
 		Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
 		NSManagedObjectContext *aContext = self.managedObjectContext;
 		[aContext deleteObject:project];
-		[[MOCManager sharedMOCManager] saveContext:aContext];
+		[[MOCManager sharedManager] saveContext:aContext];
 		
 //        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -319,7 +319,7 @@
 		// Create a new project	
 		Project *newProject = [Project insertInManagedObjectContext:aContext];
 		// Save the context
-		[[MOCManager sharedMOCManager] saveContext:aContext];		
+		[[MOCManager sharedManager] saveContext:aContext];		
 	});
 }
 

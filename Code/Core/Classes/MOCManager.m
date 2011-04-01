@@ -12,7 +12,7 @@
 @implementation MOCManager
 
 // Make this a Singleton class
-SYNTHESIZE_SINGLETON_FOR_CLASS(MOCManager);
+SYNTHESIZE_SINGLETON_FOR_CLASS(MOCManager, sharedManager);
 
 - (id)init {
 	self = [super init];
@@ -44,7 +44,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MOCManager);
 
 // Utility class method to return the main moc
 + (NSManagedObjectContext *)sharedContext {
-	return [[MOCManager sharedMOCManager] managedObjectContext];
+	return [[MOCManager sharedManager] managedObjectContext];
 }
 
 

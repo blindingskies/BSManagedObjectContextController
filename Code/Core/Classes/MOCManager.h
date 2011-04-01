@@ -10,7 +10,7 @@
 
 @interface MOCManager : BSManagedObjectContextManager { }
 
-+ (MOCManager *)sharedMOCManager;
++ (MOCManager *)sharedManager;
 + (NSManagedObjectContext *)sharedContext;
 
 @end

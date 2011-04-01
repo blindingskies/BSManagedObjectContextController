@@ -12,11 +12,11 @@
 //  appreciated but not required.
 //
 
-#define SYNTHESIZE_SINGLETON_FOR_CLASS(classname) \
+#define SYNTHESIZE_SINGLETON_FOR_CLASS(classname, constructor) \
  \
 static classname *shared##classname = nil; \
  \
-+ (classname *)shared##classname \
++ (classname *)constructor \
 { \
 	@synchronized(self) \
 	{ \

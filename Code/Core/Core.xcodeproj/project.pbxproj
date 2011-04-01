@@ -45,14 +45,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 65DF8DDA130BEA80002D0C3A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 65DF8E0E130BEE3F002D0C3A /* CoreBundle */;
+			remoteGlobalIDString = 65DF8E0E130BEE3F002D0C3A;
 			remoteInfo = CoreBundle;
 		};
 		65DF8EB9130BF7CF002D0C3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65DF8DDA130BEA80002D0C3A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 65DF8E0E130BEE3F002D0C3A /* CoreBundle */;
+			remoteGlobalIDString = 65DF8E0E130BEE3F002D0C3A;
 			remoteInfo = CoreBundle;
 		};
 /* End PBXContainerItemProxy section */
@@ -76,7 +76,7 @@
 		65DF8E0F130BEE3F002D0C3A /* CoreBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		65DF8E11130BEE3F002D0C3A /* CoreBundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoreBundle-Info.plist"; sourceTree = "<group>"; };
 		65DF8E15130BEE71002D0C3A /* 01_MappingModel_02.xcmappingmodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcmappingmodel; name = 01_MappingModel_02.xcmappingmodel; path = "Core Data Models/01_MappingModel_02.xcmappingmodel"; sourceTree = "<group>"; };
-		65DF8E72130BF29F002D0C3A /* Core */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; path = Core; sourceTree = BUILT_PRODUCTS_DIR; };
+		65DF8E72130BF29F002D0C3A /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65DF8E73130BF29F002D0C3A /* Core-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Core-Info.plist"; sourceTree = "<group>"; };
 		65DF8E77130BF2AB002D0C3A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		65DF8EAD130BF798002D0C3A /* libCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				65DF8E0F130BEE3F002D0C3A /* CoreBundle.bundle */,
-				65DF8E72130BF29F002D0C3A /* Core */,
+				65DF8E72130BF29F002D0C3A /* Core.framework */,
 				65DF8EAD130BF798002D0C3A /* libCore.a */,
 			);
 			name = Products;
@@ -259,7 +259,7 @@
 			);
 			name = Core;
 			productName = Core;
-			productReference = 65DF8E72130BF29F002D0C3A /* Core */;
+			productReference = 65DF8E72130BF29F002D0C3A /* Core.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		65DF8EAC130BF798002D0C3A /* libCore */ = {

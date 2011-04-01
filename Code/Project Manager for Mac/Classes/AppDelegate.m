@@ -19,7 +19,7 @@
 
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
-	MOCManager *mocManager = [MOCManager sharedMOCManager];
+	MOCManager *mocManager = [MOCManager sharedManager];
 	return [mocManager applicationShouldTerminate:sender];
 }
 
@@ -28,7 +28,7 @@
 
 - (NSManagedObjectContext *)managedObjectContext {
 	if (!managedObjectContext) {
-		MOCManager *mocManager = [MOCManager sharedMOCManager];
+		MOCManager *mocManager = [MOCManager sharedManager];
 		managedObjectContext = [mocManager managedObjectContext];
 	}
 	return managedObjectContext;

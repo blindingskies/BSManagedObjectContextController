@@ -60,7 +60,7 @@ NSInteger sortVersionedModelPaths(id str1, id str2, void *context);
 
 // Define the singleton method although normally, an application would subclass this to
 // specify the file system location of the application's data store.
-+ (BSManagedObjectContextManager *)sharedBSManagedObjectContextManager;
++ (BSManagedObjectContextManager *)sharedManager;
 
 // This will migrate the datastore to the latest version of the model
 - (BOOL)progressivelyMigrateURL:(NSURL *)sourceStoreURL ofType:(NSString *)type toModel:(NSManagedObjectModel *)finalModel error:(NSError **)error;
