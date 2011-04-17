@@ -33,8 +33,6 @@ NSInteger sortVersionedModelPaths(id str1, id str2, void *context) {
 	}
 }
 
-
-
 @implementation BSManagedObjectContextManager
 
 // Make this a Singleton class
@@ -170,12 +168,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BSManagedObjectContextManager, sharedManager);
 		[[NSApplication sharedApplication] presentError:error];
 #endif
         [persistentStoreCoordinator release], persistentStoreCoordinator = nil;
-#if (!TARGET_OS_MAC && (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE))
+#if (TARGET_OS_MAC && (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE))
 		[NSException raise:BSMOCManagerFailedToCreatePersistentStoreExceptionName format:@"Unable to create persistent store"];
 #endif
         return nil;
     }    
-
+	
     return persistentStoreCoordinator;
 }
 
