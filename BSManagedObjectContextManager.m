@@ -332,16 +332,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BSManagedObjectContextManager, sharedManager);
 
 - (NSManagedObjectContext *)freshManagedObjectContext {
 	
-	// Get the persistent store coordinator
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (!coordinator) {
-		[NSException raise:BSMOCManagerFailedToInitialisePersistentStoreExceptionName format:@"Failed to initialize the store"];		
-        return nil;
-    }
-	
-	// Create a managed object context
-	NSManagedObjectContext *aContext = [[NSManagedObjectContext alloc] init];	
-	[aContext setPersistentStoreCoordinator:coordinator];
+	// Get a blank context
+	NSManagedObjectContext *aContext = [self blankManagedObjectContext];
 	
 	// Register for notifications	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -357,8 +349,31 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BSManagedObjectContextManager, sharedManager);
 	[nc addObserver:self selector:@selector(mergeChangesFromContextOnOtherThread:) name:NSManagedObjectContextDidSaveNotification object:aContext];			
 	
 	// return the context we've just created, and autorelease it
-	return [aContext autorelease];
+	return aContext;
 }
+
+// Will create a new managed object context, but without any notifications
+// so that the calling library can set up it's own notifications
+- (NSManagedObjectContext *)blankManagedObjectContext {
+	
+	// Get the persistent store coordinator
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (!coordinator) {
+		[NSException raise:BSMOCManagerFailedToInitialisePersistentStoreExceptionName format:@"Failed to initialize the store"];		
+        return nil;
+    }
+	
+	// Create a managed object context
+	NSManagedObjectContext *aContext = [[NSManagedObjectContext alloc] init];	
+	[aContext setPersistentStoreCoordinator:coordinator];
+	
+	// Call our helper method
+	[self didAddStoreCoordinator:coordinator toContext:aContext];
+	
+	// return the context we've just created, and autorelease it
+	return [aContext autorelease];	
+}
+
 
 - (BOOL)saveContext:(NSManagedObjectContext *)aContext {
 	NSError *error = nil;
@@ -434,30 +449,36 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BSManagedObjectContextManager, sharedManager);
 #pragma mark Notifications
 
 - (void)managedObjectContextWillSave:(NSNotification *)aNotificationNote {
+	
 	// If there is a delegate, which responds to the correct delegate method, then
 	// pass this notification on
-	if(delegate && [delegate respondsToSelector:@selector(managedObjectContextManager:willSaveManagedObjectContext:)]) {
+	if (delegate && [delegate respondsToSelector:@selector(managedObjectContextManager:willSaveManagedObjectContext:)]) {
 		[delegate managedObjectContextManager:self willSaveManagedObjectContext:aNotificationNote];
 	}
 }
 
 - (void)managedObjectContextDidSave:(NSNotification *)aNotificationNote {
+	
 	// If there is a delegate, which responds to the correct delegate method, then
 	// pass this notification on
-	if(delegate && [delegate respondsToSelector:@selector(managedObjectContextManager:didSaveManagedObjectContext:)]) {
+	if (delegate && [delegate respondsToSelector:@selector(managedObjectContextManager:didSaveManagedObjectContext:)]) {
 		[delegate managedObjectContextManager:self didSaveManagedObjectContext:aNotificationNote];
 	}					
 }
 
 - (void)mergeChangesFromContextOnOtherThread:(NSNotification *)aNotificationNote {
-	if([NSThread isMainThread]) {
-		[[self managedObjectContext] mergeChangesFromContextDidSaveNotification:aNotificationNote];
+	if ([NSThread isMainThread]) {
+		[managedObjectContext mergeChangesFromContextDidSaveNotification:aNotificationNote];
 	} else {
 		dispatch_sync(dispatch_get_main_queue(), ^{
-			[[self managedObjectContext] mergeChangesFromContextDidSaveNotification:aNotificationNote];	
+			[managedObjectContext mergeChangesFromContextDidSaveNotification:aNotificationNote];	
 		});
 	}
 }
+
+// Virtual methods which can be over-ridden by the subclass
+- (void)didAddStoreCoordinator:(NSPersistentStoreCoordinator *)storeCoordinator toContext:(NSManagedObjectContext *)aContext { }
+
 
 
 @end

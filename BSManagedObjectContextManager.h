@@ -18,8 +18,11 @@ NSInteger sortVersionedModelPaths(id str1, id str2, void *context);
 @class BSManagedObjectContextManager;
 
 @protocol BSManagedObjectContextManagerDelegate <NSObject>
+
 @optional
 - (void)managedObjectContextManager:(BSManagedObjectContextManager *)manager willSaveManagedObjectContext:(NSNotification *)aNotificationNote;
+
+@optional
 - (void)managedObjectContextManager:(BSManagedObjectContextManager *)manager didSaveManagedObjectContext:(NSNotification *)aNotificationNote;
 @end
 
@@ -65,12 +68,17 @@ NSInteger sortVersionedModelPaths(id str1, id str2, void *context);
 // This will migrate the datastore to the latest version of the model
 - (BOOL)progressivelyMigrateURL:(NSURL *)sourceStoreURL ofType:(NSString *)type toModel:(NSManagedObjectModel *)finalModel error:(NSError **)error;
 
+
 // Methods to save a managed object context.
 - (BOOL)saveContext:(NSManagedObjectContext *)aContext;
 - (BOOL)saveContext:(NSManagedObjectContext *)aContext withError:(NSError **)anError;
 
 // Will create a new managed object context with appropriate notifications
 - (NSManagedObjectContext *)freshManagedObjectContext;
+
+// Will create a new managed object context, but without any notifications
+// so that the calling library can set up it's own notifications
+- (NSManagedObjectContext *)blankManagedObjectContext;
 
 // Notification handlers.
 - (void)managedObjectContextWillSave:(NSNotification *)aNotificationNote;
@@ -81,5 +89,9 @@ NSInteger sortVersionedModelPaths(id str1, id str2, void *context);
 #if (TARGET_OS_MAC && !(TARGET_OS_EMBEDDED || TARGET_OS_IPHONE))
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender;
 #endif
+
+// Virtual methods which can be over-ridden by the subclass
+- (void)didAddStoreCoordinator:(NSPersistentStoreCoordinator *)storeCoordinator toContext:(NSManagedObjectContext *)aContext;
+
 
 @end
