@@ -91,7 +91,10 @@ NSInteger sortVersionedModelPaths(id str1, id str2, void *context);
 #endif
 
 // Virtual methods which can be over-ridden by the subclass
+// Default implementation does nothing
 - (void)didAddStoreCoordinator:(NSPersistentStoreCoordinator *)storeCoordinator toContext:(NSManagedObjectContext *)aContext;
+// Default implementation returns the argument (no-change)
+- (NSManagedObjectModel *)willUseManagedObjectModel:(NSManagedObjectModel *)model;
 
 
 @end

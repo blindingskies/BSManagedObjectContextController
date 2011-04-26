@@ -98,11 +98,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BSManagedObjectContextManager, sharedManager);
 	}
 		
 	managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:[allBundles allObjects]] retain];
-    if (managedObjectModel) 	
+    if (managedObjectModel) {
+		
+		// Allow subclasses to modify the model programmatically
+		managedObjectModel = [self willUseManagedObjectModel:managedObjectModel];
 		return managedObjectModel;	
-	
-	return nil;
-	
+	} 	
+	return nil;	
 }
 
 /**
@@ -476,9 +478,16 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BSManagedObjectContextManager, sharedManager);
 	}
 }
 
+#pragma mark -
+#pragma mark Methods for subclassing
+
 // Virtual methods which can be over-ridden by the subclass
 - (void)didAddStoreCoordinator:(NSPersistentStoreCoordinator *)storeCoordinator toContext:(NSManagedObjectContext *)aContext { }
 
+// Default implementation returns the argument (no-change)
+- (NSManagedObjectModel *)willUseManagedObjectModel:(NSManagedObjectModel *)model {
+	return model;
+}
 
 
 @end
