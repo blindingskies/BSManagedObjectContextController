@@ -316,17 +316,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BSManagedObjectContextManager, sharedManager);
 		return managedObjectContext;
 	} 
 	
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (!coordinator) {
-		[NSException raise:BSMOCManagerFailedToInitialisePersistentStoreExceptionName format:@"Failed to initialize the store"];		
-        return nil;
-    }
-	
-	NSManagedObjectContext *aContext = [[NSManagedObjectContext alloc] init];	
-	[aContext setPersistentStoreCoordinator: coordinator];
-	
-	// Set the context to the main managed object context	
-	managedObjectContext = aContext;
+	// Create a mananged object context
+	managedObjectContext = [self blankManagedObjectContext];
+
+	// Set the merge policy
+	[managedObjectContext setMergePolicy:NSMergeByPropertyStoreTrumpMergePolicy];
 	
 	// return it with retain count of 1 (so we hold onto it)
 	return managedObjectContext;
@@ -336,6 +330,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BSManagedObjectContextManager, sharedManager);
 	
 	// Get a blank context
 	NSManagedObjectContext *aContext = [self blankManagedObjectContext];
+	
+	// Set the merge policies
+	[aContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
 	
 	// Register for notifications	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
