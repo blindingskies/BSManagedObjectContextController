@@ -14,7 +14,6 @@
 
 
 #import "BSManagedObjectContextManager.h"
-#import "SynthesizeSingleton.h"
 
 NSString * const BSMOCManagerFailedToMigrateExceptionName = @"BSMOCManagerFailedToMigrateException";
 NSString * const BSMOCManagerFailedToCreatePersistentStoreExceptionName = @"BSMOCManagerFailedToCreatePersistentStoreException";
@@ -35,8 +34,6 @@ NSInteger sortVersionedModelPaths(id str1, id str2, void *context) {
 
 @implementation BSManagedObjectContextManager
 
-// Make this a Singleton class
-SYNTHESIZE_SINGLETON_FOR_CLASS(BSManagedObjectContextManager, sharedManager);
 
 @synthesize delegate;
 @synthesize applicationSupportDirectory;
@@ -434,7 +431,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BSManagedObjectContextManager, sharedManager);
 		[alert addButtonWithTitle:quitButton];
 		[alert addButtonWithTitle:cancelButton];
 		
-		int answer = [alert runModal];
+		NSInteger answer = [alert runModal];
 		[alert release], alert = nil;
 		if (answer == NSAlertAlternateReturn) return NSTerminateCancel;
 		
